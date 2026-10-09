@@ -1,0 +1,2119 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    >
+
+    <meta
+        name="description"
+        content="RE:FOUND FMIPA UNIMED - Sistem Lost & Found untuk lingkungan FMIPA Universitas Negeri Medan."
+    >
+
+    <title>RE:FOUND — FMIPA UNIMED</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+
+        /* =========================================================
+           RE:FOUND — HOME PAGE
+        ========================================================= */
+
+        :root {
+            --rf-green: #00a94f;
+            --rf-green-dark: #007f3b;
+            --rf-green-light: #43df87;
+            --rf-mint: #e9faef;
+            --rf-mint-soft: #f4fbf7;
+            --rf-text: #14261d;
+            --rf-text-soft: #607068;
+            --rf-border: rgba(0, 169, 79, 0.10);
+        }
+
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+            margin: 0;
+
+            font-family:
+                Inter,
+                "Segoe UI",
+                Roboto,
+                Arial,
+                sans-serif;
+
+            color: var(--rf-text);
+
+            background:
+                radial-gradient(
+                    circle at 78% 18%,
+                    rgba(67, 223, 135, 0.11),
+                    transparent 30%
+                ),
+                linear-gradient(
+                    180deg,
+                    #ffffff 0%,
+                    #f7fcf9 100%
+                );
+        }
+
+
+        a {
+            text-decoration: none;
+        }
+
+
+        /* =========================================================
+           NAVBAR
+        ========================================================= */
+
+        .rf-navbar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+
+            width: 100%;
+            min-height: 86px;
+
+            display: flex;
+            align-items: center;
+
+            padding: 8px 28px;
+
+            background: rgba(255, 255, 255, 0.95);
+
+            border-bottom:
+                1px solid
+                rgba(0, 169, 79, 0.07);
+
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+        }
+
+
+        /* =========================================================
+           LOGO
+        ========================================================= */
+
+        .rf-logo {
+            display: flex;
+            align-items: center;
+
+            flex-shrink: 0;
+
+            width: 235px;
+            height: 68px;
+
+            overflow: hidden;
+        }
+
+
+        .rf-logo img {
+            display: block;
+
+            width: 220px;
+            height: 64px;
+
+            object-fit: contain;
+            object-position: left center;
+
+            transform: none;
+        }
+
+
+        /* =========================================================
+           NAVIGATION
+        ========================================================= */
+
+        .rf-nav {
+            display: flex;
+            align-items: center;
+
+            gap: 32px;
+
+            margin-left: auto;
+            margin-right: 32px;
+        }
+
+
+        .rf-nav a {
+            position: relative;
+
+            padding: 8px 0;
+
+            color: #26372d;
+
+            font-size: 14px;
+            font-weight: 600;
+
+            transition:
+                color 0.25s ease;
+        }
+
+
+        .rf-nav a::after {
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+            bottom: 0;
+
+            width: 100%;
+            height: 2px;
+
+            border-radius: 10px;
+
+            background: var(--rf-green);
+
+            transform: scaleX(0);
+
+            transform-origin: center;
+
+            transition:
+                transform 0.25s ease;
+        }
+
+
+        .rf-nav a:hover,
+        .rf-nav a.active {
+            color: var(--rf-green);
+        }
+
+
+        .rf-nav a:hover::after,
+        .rf-nav a.active::after {
+            transform: scaleX(1);
+        }
+
+
+        /* =========================================================
+           NAV BUTTONS
+        ========================================================= */
+
+        .rf-nav-actions {
+            display: flex;
+            align-items: center;
+
+            gap: 9px;
+        }
+
+
+        .rf-login,
+        .rf-register {
+            min-width: 82px;
+
+            padding: 10px 17px;
+
+            border-radius: 999px;
+
+            text-align: center;
+
+            font-size: 13px;
+            font-weight: 750;
+
+            transition:
+                transform 0.25s ease,
+                box-shadow 0.25s ease;
+        }
+
+
+        .rf-login {
+            color: var(--rf-green);
+
+            background: #ffffff;
+
+            border:
+                1.5px solid
+                var(--rf-green);
+        }
+
+
+        .rf-register {
+            color: #ffffff;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--rf-green),
+                    var(--rf-green-light)
+                );
+
+            box-shadow:
+                0 8px 20px
+                rgba(0, 169, 79, 0.17);
+        }
+
+
+        .rf-login:hover,
+        .rf-register:hover {
+            transform: translateY(-2px);
+        }
+
+
+        /* =========================================================
+           HERO
+        ========================================================= */
+
+        .rf-hero {
+            position: relative;
+
+            max-width: 1280px;
+
+            min-height: 620px;
+
+            margin: 0 auto;
+
+            padding:
+                55px 30px
+                65px;
+
+            display: grid;
+
+            grid-template-columns:
+                0.92fr 1.08fr;
+
+            align-items: center;
+
+            gap: 25px;
+
+            overflow: hidden;
+        }
+
+
+        /* =========================================================
+           HERO LEFT
+        ========================================================= */
+
+        .rf-hero-content {
+            position: relative;
+            z-index: 10;
+
+            animation:
+                rfFadeUp 0.65s ease both;
+        }
+
+
+        .rf-label {
+            display: inline-flex;
+            align-items: center;
+
+            padding: 8px 15px;
+
+            margin-bottom: 20px;
+
+            border-radius: 999px;
+
+            color: #008844;
+
+            background: #dff8e9;
+
+            font-size: 11px;
+            font-weight: 800;
+
+            letter-spacing: 0.2px;
+        }
+
+
+        .rf-hero h1 {
+            max-width: 620px;
+
+            margin:
+                0 0 20px;
+
+            color: var(--rf-text);
+
+            font-size:
+                clamp(44px, 5vw, 68px);
+
+            line-height: 1.04;
+
+            letter-spacing: -2.8px;
+
+            font-weight: 850;
+
+            text-shadow: none;
+        }
+
+
+        .rf-hero h1 span {
+            color: var(--rf-green);
+        }
+
+
+        .rf-description {
+            max-width: 565px;
+
+            margin:
+                0 0 28px;
+
+            color: var(--rf-text-soft);
+
+            font-size: 16px;
+
+            line-height: 1.7;
+
+            text-shadow: none;
+        }
+
+
+        /* =========================================================
+           HERO BUTTONS
+        ========================================================= */
+
+        .rf-hero-buttons {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 12px;
+        }
+
+
+        .rf-primary,
+        .rf-secondary {
+            display: inline-flex;
+
+            align-items: center;
+            justify-content: center;
+
+            min-height: 49px;
+
+            padding: 0 21px;
+
+            border-radius: 999px;
+
+            font-size: 13px;
+            font-weight: 800;
+
+            transition:
+                transform 0.25s ease,
+                box-shadow 0.25s ease;
+        }
+
+
+        .rf-primary {
+            color: #ffffff;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--rf-green),
+                    var(--rf-green-light)
+                );
+
+            box-shadow:
+                0 12px 28px
+                rgba(0, 169, 79, 0.20);
+        }
+
+
+        .rf-secondary {
+            color: var(--rf-green);
+
+            background: #ffffff;
+
+            border:
+                1.5px solid
+                var(--rf-green);
+        }
+
+
+        .rf-primary:hover,
+        .rf-secondary:hover {
+            transform: translateY(-3px);
+        }
+
+
+        /* =========================================================
+           RIGHT VISUAL
+           HP + TAS + KACA PEMBESAR
+        ========================================================= */
+
+        .rf-visual {
+            position: relative;
+
+            width: 100%;
+            height: 520px;
+
+            animation:
+                rfFadeUp 0.8s 0.08s ease both;
+        }
+
+
+        /* =========================================================
+           BACKGROUND GLOW
+        ========================================================= */
+
+        .rf-glow {
+            position: absolute;
+
+            width: 430px;
+            height: 430px;
+
+            left: 55%;
+            top: 52%;
+
+            transform:
+                translate(-50%, -50%);
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(67, 223, 135, 0.30) 0%,
+                    rgba(67, 223, 135, 0.12) 45%,
+                    transparent 72%
+                );
+        }
+
+
+        /* =========================================================
+           SOFT PLATFORM
+        ========================================================= */
+
+        .rf-visual-platform {
+            position: absolute;
+
+            width: 430px;
+            height: 135px;
+
+            left: 56%;
+            bottom: 42px;
+
+            transform:
+                translateX(-50%)
+                rotate(-4deg);
+
+            border-radius: 40px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,0.92),
+                    rgba(225,249,236,0.76)
+                );
+
+            border:
+                1px solid
+                rgba(255,255,255,0.95);
+
+            box-shadow:
+                0 25px 55px
+                rgba(20,60,38,0.09);
+        }
+
+
+        /* =========================================================
+           PHONE
+        ========================================================= */
+
+        .rf-phone {
+            position: absolute;
+
+            z-index: 7;
+
+            left: 48%;
+            top: 165px;
+
+            width: 128px;
+            height: 220px;
+
+            transform:
+                translateX(-50%)
+                rotate(-8deg);
+
+            padding: 9px;
+
+            border-radius: 21px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #1d3428,
+                    #294d3a
+                );
+
+            box-shadow:
+                0 25px 45px
+                rgba(20,60,38,0.22);
+        }
+
+
+        .rf-phone::before {
+            content: "";
+
+            position: absolute;
+
+            top: 9px;
+            left: 50%;
+
+            width: 35px;
+            height: 6px;
+
+            transform:
+                translateX(-50%);
+
+            border-radius: 10px;
+
+            background:
+                #0f2118;
+        }
+
+
+        .rf-phone-screen {
+            position: relative;
+
+            width: 100%;
+            height: 100%;
+
+            padding:
+                28px 12px 12px;
+
+            border-radius: 14px;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    #f8fffb,
+                    #eaf8ef
+                );
+
+            overflow: hidden;
+        }
+
+
+        .rf-phone-logo {
+            width: 44px;
+            height: 9px;
+
+            margin-bottom: 17px;
+
+            border-radius: 4px;
+
+            background:
+                var(--rf-green);
+        }
+
+
+        .rf-phone-line {
+            width: 78%;
+            height: 7px;
+
+            margin-bottom: 8px;
+
+            border-radius: 6px;
+
+            background:
+                #cdebd8;
+        }
+
+
+        .rf-phone-line.short {
+            width: 55%;
+        }
+
+
+        .rf-phone-item {
+            width: 100%;
+            height: 52px;
+
+            margin-top: 13px;
+
+            border-radius: 10px;
+
+            background:
+                #d9f1e2;
+
+            position: relative;
+        }
+
+
+        .rf-phone-item::before {
+            content: "";
+
+            position: absolute;
+
+            left: 10px;
+            top: 10px;
+
+            width: 29px;
+            height: 29px;
+
+            border-radius: 8px;
+
+            background:
+                #b5dfc5;
+        }
+
+
+        .rf-phone-item::after {
+            content: "";
+
+            position: absolute;
+
+            right: 10px;
+            top: 13px;
+
+            width: 38px;
+            height: 6px;
+
+            border-radius: 5px;
+
+            background:
+                #8ccaa2;
+
+            box-shadow:
+                0 11px 0
+                #a9d9b9;
+        }
+
+
+        .rf-phone-button {
+            position: absolute;
+
+            left: 12px;
+            right: 12px;
+            bottom: 12px;
+
+            height: 22px;
+
+            border-radius: 8px;
+
+            background:
+                var(--rf-green);
+        }
+
+
+        /* =========================================================
+           BACKPACK
+        ========================================================= */
+
+        .rf-bag {
+            position: absolute;
+
+            z-index: 8;
+
+            right: 7%;
+            bottom: 105px;
+
+            width: 132px;
+            height: 148px;
+
+            border-radius:
+                29px 29px 24px 24px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #173327,
+                    #315847
+                );
+
+            box-shadow:
+                0 24px 38px
+                rgba(20,60,38,0.22);
+
+            transform:
+                rotate(6deg);
+
+            animation:
+                rfBagFloat 4.5s ease-in-out infinite;
+        }
+
+
+        /* BAG HANDLE */
+
+        .rf-bag::before {
+            content: "";
+
+            position: absolute;
+
+            left: 30px;
+            top: -42px;
+
+            width: 67px;
+            height: 63px;
+
+            border:
+                9px solid
+                #223c2e;
+
+            border-bottom: none;
+
+            border-radius:
+                35px 35px 0 0;
+        }
+
+
+        /* BAG FRONT POCKET */
+
+        .rf-bag::after {
+            content: "";
+
+            position: absolute;
+
+            left: 25px;
+            top: 60px;
+
+            width: 82px;
+            height: 43px;
+
+            border-radius: 12px;
+
+            background:
+                #203d2e;
+
+            border:
+                2px solid
+                rgba(255,255,255,0.05);
+
+            box-shadow:
+                inset 0 3px 0
+                rgba(255,255,255,0.05);
+        }
+
+
+        /* =========================================================
+           MAGNIFYING GLASS
+        ========================================================= */
+
+        .rf-orb {
+            position: absolute;
+
+            z-index: 10;
+
+            width: 116px;
+            height: 116px;
+
+            left: 63%;
+            top: 235px;
+
+            transform:
+                translate(-50%, -50%)
+                rotate(-12deg);
+
+            border:
+                11px solid
+                var(--rf-green);
+
+            border-radius: 50%;
+
+            background:
+                rgba(255,255,255,0.16);
+
+            box-shadow:
+                0 0 0 11px
+                rgba(0,169,79,0.07),
+
+                0 18px 35px
+                rgba(0,169,79,0.17);
+        }
+
+
+        .rf-orb::after {
+            content: "";
+
+            position: absolute;
+
+            width: 77px;
+            height: 14px;
+
+            right: -62px;
+            bottom: -24px;
+
+            border-radius: 20px;
+
+            background:
+                var(--rf-green);
+
+            transform:
+                rotate(45deg);
+        }
+
+
+        /* =========================================================
+           STEPS
+        ========================================================= */
+
+        .rf-steps-section {
+            padding:
+                15px 25px 75px;
+        }
+
+
+        .rf-steps {
+            max-width: 1150px;
+
+            margin: 0 auto;
+
+            padding:
+                32px 30px;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            border-radius: 25px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(233,250,239,0.82),
+                    rgba(255,255,255,0.78)
+                );
+
+            border:
+                1px solid
+                rgba(255,255,255,0.95);
+
+            box-shadow:
+                0 18px 45px
+                rgba(20,60,38,0.06);
+        }
+
+
+        .rf-step {
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            gap: 15px;
+
+            min-height: 75px;
+
+            border-right:
+                1px solid
+                rgba(0,169,79,0.14);
+        }
+
+
+        .rf-step:last-child {
+            border-right: none;
+        }
+
+
+        .rf-step-number {
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            width: 43px;
+            height: 43px;
+
+            flex-shrink: 0;
+
+            border-radius: 50%;
+
+            color: white;
+
+            background:
+                var(--rf-green);
+
+            font-size: 13px;
+            font-weight: 800;
+        }
+
+
+        .rf-step-icon {
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            width: 43px;
+            height: 43px;
+
+            flex-shrink: 0;
+
+            border-radius: 13px;
+
+            background:
+                #dff8e9;
+
+            color:
+                var(--rf-green);
+
+            font-size: 19px;
+        }
+
+
+        .rf-step span {
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+
+        /* =========================================================
+           GENERAL SECTIONS
+        ========================================================= */
+
+        .rf-section {
+            max-width: 1150px;
+
+            margin: 0 auto;
+
+            padding:
+                55px 25px 90px;
+        }
+
+
+        .rf-section-label {
+            display: inline-block;
+
+            margin-bottom: 13px;
+
+            padding: 7px 13px;
+
+            border-radius: 999px;
+
+            color:
+                #008844;
+
+            background:
+                #dff8e9;
+
+            font-size: 10px;
+            font-weight: 800;
+        }
+
+
+        .rf-section-heading {
+            max-width: 700px;
+
+            margin-bottom: 38px;
+        }
+
+
+        .rf-section-heading h2 {
+            margin: 0;
+
+            color:
+                var(--rf-text);
+
+            font-size:
+                clamp(30px, 4vw, 43px);
+
+            line-height: 1.15;
+
+            letter-spacing: -1.5px;
+
+            text-shadow: none;
+        }
+
+
+        .rf-card-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 18px;
+        }
+
+
+        .rf-card {
+            position: relative;
+
+            padding: 30px;
+
+            min-height: 220px;
+
+            border-radius: 21px;
+
+            background:
+                rgba(255,255,255,0.74);
+
+            border:
+                1px solid
+                rgba(0,169,79,0.10);
+
+            box-shadow:
+                0 12px 35px
+                rgba(20,60,38,0.05);
+
+            overflow: hidden;
+
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease;
+        }
+
+
+        .rf-card::before {
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+            top: 0;
+
+            width: 100%;
+            height: 3px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    var(--rf-green),
+                    var(--rf-green-light)
+                );
+
+            transform:
+                scaleX(0);
+
+            transform-origin: left;
+
+            transition:
+                transform 0.3s ease;
+        }
+
+
+        .rf-card:hover {
+            transform:
+                translateY(-5px);
+
+            box-shadow:
+                0 20px 45px
+                rgba(20,60,38,0.09);
+        }
+
+
+        .rf-card:hover::before {
+            transform:
+                scaleX(1);
+        }
+
+
+        .rf-card-icon {
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            width: 53px;
+            height: 53px;
+
+            margin-bottom: 20px;
+
+            border-radius: 15px;
+
+            color:
+                var(--rf-green);
+
+            background:
+                #dff8e9;
+
+            font-size: 22px;
+        }
+
+
+        .rf-card h3 {
+            margin:
+                0 0 10px;
+
+            font-size: 18px;
+        }
+
+
+        .rf-card p {
+            margin: 0;
+
+            color:
+                var(--rf-text-soft);
+
+            font-size: 13px;
+
+            line-height: 1.65;
+        }
+
+
+        /* =========================================================
+           ABOUT
+        ========================================================= */
+
+        .rf-about-section {
+            padding:
+                70px 25px 85px;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    rgba(233,250,239,0.40),
+                    rgba(245,252,247,0.90)
+                );
+        }
+
+
+        .rf-about {
+            max-width: 1150px;
+
+            margin: 0 auto;
+
+            display: grid;
+
+            grid-template-columns:
+                0.9fr 1.5fr;
+
+            gap: 45px;
+
+            align-items: center;
+        }
+
+
+        .rf-about-title h2 {
+            margin: 0;
+
+            font-size:
+                clamp(30px, 4vw, 42px);
+
+            line-height: 1.15;
+
+            letter-spacing: -1.5px;
+
+            text-shadow: none;
+        }
+
+
+        .rf-about-cards {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 13px;
+        }
+
+
+        .rf-about-card {
+            padding: 22px;
+
+            min-height: 190px;
+
+            border-radius: 18px;
+
+            background:
+                rgba(255,255,255,0.78);
+
+            border:
+                1px solid
+                rgba(0,169,79,0.08);
+
+            box-shadow:
+                0 10px 30px
+                rgba(20,60,38,0.05);
+        }
+
+
+        .rf-about-card-icon {
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            width: 42px;
+            height: 42px;
+
+            margin-bottom: 16px;
+
+            border-radius: 12px;
+
+            color:
+                var(--rf-green);
+
+            background:
+                #dff8e9;
+        }
+
+
+        .rf-about-card h3 {
+            margin:
+                0 0 8px;
+
+            font-size: 15px;
+        }
+
+
+        .rf-about-card p {
+            margin: 0;
+
+            color:
+                var(--rf-text-soft);
+
+            font-size: 11px;
+
+            line-height: 1.55;
+        }
+
+
+        /* =========================================================
+           FOOTER
+        ========================================================= */
+
+        .rf-footer {
+            padding:
+                35px 25px;
+
+            color: white;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #005f31,
+                    #007f3b
+                );
+        }
+
+
+        .rf-footer-inner {
+            max-width: 1150px;
+
+            margin: 0 auto;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 30px;
+        }
+
+
+        .rf-footer-logo img {
+            width: 175px;
+
+            filter:
+                brightness(0)
+                invert(1);
+        }
+
+
+        .rf-footer-info {
+            padding-left: 30px;
+
+            border-left:
+                1px solid
+                rgba(255,255,255,0.25);
+
+            flex: 1;
+
+            color:
+                rgba(255,255,255,0.85);
+
+            font-size: 12px;
+
+            line-height: 1.6;
+        }
+
+
+        .rf-footer-copy {
+            color:
+                rgba(255,255,255,0.72);
+
+            font-size: 10px;
+        }
+
+
+        /* =========================================================
+           ANIMATION
+        ========================================================= */
+
+        @keyframes rfFadeUp {
+
+            from {
+                opacity: 0;
+
+                transform:
+                    translateY(22px);
+            }
+
+            to {
+                opacity: 1;
+
+                transform:
+                    translateY(0);
+            }
+
+        }
+
+
+        @keyframes rfBagFloat {
+
+            0%,
+            100% {
+                margin-top: 0;
+            }
+
+            50% {
+                margin-top: -7px;
+            }
+
+        }
+
+
+        /* =========================================================
+           TABLET
+        ========================================================= */
+
+        @media (max-width: 1100px) {
+
+            .rf-logo {
+                width: 205px;
+            }
+
+
+            .rf-logo img {
+                width: 195px;
+            }
+
+
+            .rf-nav {
+                gap: 20px;
+
+                margin-right: 20px;
+            }
+
+
+            .rf-hero {
+                grid-template-columns: 1fr;
+
+                text-align: center;
+
+                padding-top: 50px;
+            }
+
+
+            .rf-hero-content {
+                display: flex;
+
+                flex-direction: column;
+
+                align-items: center;
+            }
+
+
+            .rf-description {
+                max-width: 650px;
+            }
+
+
+            .rf-visual {
+                max-width: 650px;
+
+                margin: 0 auto;
+            }
+
+
+            .rf-about {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+
+        /* =========================================================
+           MOBILE
+        ========================================================= */
+
+        @media (max-width: 700px) {
+
+            .rf-navbar {
+                min-height: 72px;
+
+                padding:
+                    5px 14px;
+            }
+
+
+            .rf-logo {
+                width: 145px;
+                height: 55px;
+            }
+
+
+            .rf-logo img {
+                width: 145px;
+                height: 52px;
+            }
+
+
+            .rf-nav {
+                display: none;
+            }
+
+
+            .rf-nav-actions {
+                margin-left: auto;
+
+                gap: 6px;
+            }
+
+
+            .rf-login,
+            .rf-register {
+                min-width: 63px;
+
+                padding:
+                    8px 10px;
+
+                font-size: 10px;
+            }
+
+
+            .rf-hero {
+                min-height: auto;
+
+                padding:
+                    45px 18px
+                    10px;
+
+                gap: 0;
+            }
+
+
+            .rf-label {
+                margin-bottom: 17px;
+            }
+
+
+            .rf-hero h1 {
+                font-size: 39px;
+
+                letter-spacing: -1.8px;
+            }
+
+
+            .rf-description {
+                font-size: 14px;
+            }
+
+
+            .rf-hero-buttons {
+                flex-direction: column;
+
+                width: 100%;
+                max-width: 330px;
+            }
+
+
+            .rf-primary,
+            .rf-secondary {
+                width: 100%;
+            }
+
+
+            .rf-visual {
+                height: 455px;
+
+                margin:
+                    -10px auto
+                    -25px;
+
+                transform:
+                    scale(0.76);
+            }
+
+
+            .rf-phone {
+                left: 48%;
+                top: 190px;
+
+                transform:
+                    translateX(-50%)
+                    rotate(-8deg)
+                    scale(0.88);
+            }
+
+
+            .rf-orb {
+                left: 63%;
+                top: 270px;
+
+                transform:
+                    translate(-50%, -50%)
+                    rotate(-12deg)
+                    scale(0.92);
+            }
+
+
+            .rf-bag {
+                right: 4%;
+                bottom: 95px;
+
+                transform:
+                    rotate(6deg)
+                    scale(0.88);
+            }
+
+
+            .rf-visual-platform {
+                width: 410px;
+
+                left: 55%;
+
+                bottom: 35px;
+            }
+
+
+            .rf-glow {
+                width: 390px;
+                height: 390px;
+
+                left: 55%;
+            }
+
+
+            .rf-steps {
+                grid-template-columns: 1fr;
+
+                gap: 10px;
+
+                padding: 20px;
+            }
+
+
+            .rf-step {
+                border-right: none;
+
+                border-bottom:
+                    1px solid
+                    rgba(0,169,79,0.12);
+
+                padding:
+                    15px 0;
+            }
+
+
+            .rf-step:last-child {
+                border-bottom: none;
+            }
+
+
+            .rf-card-grid {
+                grid-template-columns: 1fr;
+            }
+
+
+            .rf-card {
+                min-height: auto;
+            }
+
+
+            .rf-about-cards {
+                grid-template-columns: 1fr;
+            }
+
+
+            .rf-about-card {
+                min-height: auto;
+            }
+
+
+            .rf-footer-inner {
+                flex-direction: column;
+
+                align-items: flex-start;
+            }
+
+
+            .rf-footer-info {
+                padding-left: 0;
+
+                padding-top: 18px;
+
+                border-left: none;
+
+                border-top:
+                    1px solid
+                    rgba(255,255,255,0.25);
+            }
+
+        }
+
+
+        /* =========================================================
+           SMALL PHONE
+        ========================================================= */
+
+        @media (max-width: 480px) {
+
+            .rf-logo {
+                width: 135px;
+            }
+
+
+            .rf-logo img {
+                width: 135px;
+            }
+
+
+            .rf-hero h1 {
+                font-size: 35px;
+            }
+
+
+            .rf-visual {
+                height: 430px;
+
+                transform:
+                    scale(0.64);
+
+                margin-top: -25px;
+                margin-bottom: -65px;
+            }
+
+
+            .rf-section {
+                padding:
+                    45px 18px
+                    65px;
+            }
+
+
+            .rf-about-section {
+                padding:
+                    50px 18px
+                    65px;
+            }
+
+        }
+
+
+        /* =========================================================
+           REDUCE MOTION
+        ========================================================= */
+
+        @media (prefers-reduced-motion: reduce) {
+
+            html {
+                scroll-behavior: auto;
+            }
+
+
+            *,
+            *::before,
+            *::after {
+                animation-duration:
+                    0.01ms !important;
+
+                animation-iteration-count:
+                    1 !important;
+
+                transition-duration:
+                    0.01ms !important;
+            }
+
+        }
+
+    </style>
+
+<link rel="stylesheet" href="css/theme.css">
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     NAVBAR
+========================================================= -->
+
+<header class="rf-navbar">
+
+    <a
+        href="index.html"
+        class="rf-logo"
+        aria-label="RE:FOUND FMIPA UNIMED"
+    >
+
+        <img
+            src="assets/refound-logo.png"
+            alt="RE:FOUND FMIPA UNIMED"
+        >
+
+    </a>
+
+
+    <nav class="rf-nav"><a href="index.html" class="active">Beranda</a><a href="pages/lost.html">Lapor</a><a href="pages/found.html">Cari</a><a href="pages/matches.html">Auto Matching</a><a href="#tentang">Tentang</a></nav>
+
+
+    <div class="rf-nav-actions">
+
+        <a
+            href="pages/login.html"
+            class="rf-login"
+        >
+            Masuk
+        </a>
+
+
+        <a
+            href="pages/register.html"
+            class="rf-register"
+        >
+            Daftar
+        </a>
+
+    </div>
+
+</header>
+
+
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<main>
+
+<section class="rf-hero"><div class="rf-hero-bg"></div>
+<div class="rf-hero-content"><div class="rf-label">● Sistem Lost &amp; Found</div>
+<h1>Temukan kembali<br><span>yang hilang!</span></h1>
+<p class="rf-description">Kelola laporan barang hilang dan barang ditemukan dengan mudah melalui RE:FOUND FMIPA UNIMED.</p>
+<div class="rf-stats"><div class="rf-stat"><i>📋</i><div><b id="s1">0</b>Laporan Masuk</div></div><div class="rf-stat"><i>📦</i><div><b id="s2">0</b>Barang Ditemukan</div></div><div class="rf-stat"><i>🛡️</i><div><b>98%</b>Akurasi Matching</div></div></div>
+<div class="rf-hero-buttons"><a href="pages/lost.html" class="rf-primary">Mulai Laporkan &rarr;</a><a href="#cara-kerja" class="rf-secondary">▷&nbsp; Lihat Cara Kerja</a></div></div>
+<div class="rf-glass"><h3>Temukan barang<br>Anda dengan cepat</h3>
+<div class="rf-search"><input placeholder="Cari nama barang..."><a href="pages/found.html">🔍</a></div>
+<div class="rf-cats"><a href="pages/found.html"><span>💻</span>Elektronik</a><a href="pages/found.html"><span>🎒</span>Tas</a><a href="pages/found.html"><span>📄</span>Dokumen</a><a href="pages/found.html"><span>⋯</span>Lainnya</a></div>
+<div class="rf-safe"><span style="font-size:28px">🛡️</span><div><b>Aman &amp; Terpercaya</b>Data pribadi pelapor dan penemu selalu terlindungi.</div></div></div></section>
+
+
+
+<!-- =========================================================
+     STEPS
+========================================================= -->
+
+<section class="rf-steps-section">
+
+    <div class="rf-steps">
+
+
+        <div class="rf-step">
+
+            <div class="rf-step-number">
+                01
+            </div>
+
+            <div class="rf-step-icon">
+                📝
+            </div>
+
+            <span>
+                Laporkan Barang
+            </span>
+
+        </div>
+
+
+        <div class="rf-step">
+
+            <div class="rf-step-number">
+                02
+            </div>
+
+            <div class="rf-step-icon">
+                🔗
+            </div>
+
+            <span>
+                Sistem Mencocokkan
+            </span>
+
+        </div>
+
+
+        <div class="rf-step">
+
+            <div class="rf-step-number">
+                03
+            </div>
+
+            <div class="rf-step-icon">
+                🛡️
+            </div>
+
+            <span>
+                Verifikasi & Temukan
+            </span>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     CARA KERJA
+========================================================= -->
+
+<section
+    class="rf-section"
+    id="cara-kerja"
+>
+
+
+    <div class="rf-section-heading">
+
+
+        <div class="rf-section-label">
+            CARA KERJA
+        </div>
+
+
+        <h2>
+            Sederhana untuk digunakan.
+            Lebih terarah untuk mencari.
+        </h2>
+
+
+    </div>
+
+
+
+    <div class="rf-card-grid">
+
+
+        <div class="rf-card">
+
+            <div class="rf-card-icon">
+                📝
+            </div>
+
+            <h3>
+                Laporkan
+            </h3>
+
+            <p>
+                Masukkan informasi barang
+                yang hilang atau barang
+                yang kamu temukan.
+            </p>
+
+        </div>
+
+
+
+        <div class="rf-card">
+
+            <div class="rf-card-icon">
+                🔗
+            </div>
+
+            <h3>
+                Automatic Matching
+            </h3>
+
+            <p>
+                Sistem membandingkan karakteristik
+                barang untuk menemukan kemungkinan
+                kecocokan.
+            </p>
+
+        </div>
+
+
+
+        <div class="rf-card">
+
+            <div class="rf-card-icon">
+                🔐
+            </div>
+
+            <h3>
+                Verifikasi
+            </h3>
+
+            <p>
+                Informasi tertentu pada barang temuan
+                tidak langsung ditampilkan kepada pelapor.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     TENTANG
+========================================================= -->
+
+<section
+    class="rf-about-section"
+    id="tentang"
+>
+
+
+    <div class="rf-about">
+
+
+        <div class="rf-about-title">
+
+
+            <div class="rf-section-label">
+                TENTANG RE:FOUND
+            </div>
+
+
+            <h2>
+                Lost & Found yang dibuat
+                khusus untuk lingkungan
+                FMIPA UNIMED.
+            </h2>
+
+
+        </div>
+
+
+
+        <div class="rf-about-cards">
+
+
+            <div class="rf-about-card">
+
+                <div class="rf-about-card-icon">
+                    🎓
+                </div>
+
+
+                <h3>
+                    Khusus FMIPA
+                </h3>
+
+
+                <p>
+                    Sistem difokuskan pada lingkungan
+                    FMIPA Universitas Negeri Medan.
+                </p>
+
+            </div>
+
+
+
+            <div class="rf-about-card">
+
+                <div class="rf-about-card-icon">
+                    ⚡
+                </div>
+
+
+                <h3>
+                    Lebih Terarah
+                </h3>
+
+
+                <p>
+                    Laporan barang tersimpan secara
+                    terstruktur sehingga lebih mudah
+                    dibandingkan pencarian manual.
+                </p>
+
+            </div>
+
+
+
+            <div class="rf-about-card">
+
+                <div class="rf-about-card-icon">
+                    🛡️
+                </div>
+
+
+                <h3>
+                    Lebih Aman
+                </h3>
+
+
+                <p>
+                    Detail tertentu dari barang temuan
+                    tidak langsung ditampilkan kepada
+                    pelapor.
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+</main>
+
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer class="rf-footer">
+
+
+    <div class="rf-footer-inner">
+
+
+        <div class="rf-footer-logo">
+
+            <img
+                src="assets/refound-logo.png"
+                alt="RE:FOUND FMIPA UNIMED"
+            >
+
+        </div>
+
+
+        <div class="rf-footer-info">
+
+            Lost & Found System —
+
+            <br>
+
+            FMIPA Universitas Negeri Medan
+
+        </div>
+
+
+        <div class="rf-footer-copy">
+
+            © 2026 RE:FOUND FMIPA UNIMED
+
+        </div>
+
+
+    </div>
+
+
+</footer>
+
+
+<script src="js/store.js"></script><script>var t=RF.stats();document.getElementById("s1").textContent=t.lost;document.getElementById("s2").textContent=t.found;</script><script src="js/ui.js"></script></body>
+
+</html>

@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>Lapor Barang Ditemukan - RE:FOUND FMIPA UNIMED</title>
+
+<link
+    rel="stylesheet"
+    href="../css/style.css"
+>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+
+    font-family:
+        Inter,
+        "Segoe UI",
+        Roboto,
+        Arial,
+        sans-serif;
+
+    color: #17241c;
+
+    background:
+        radial-gradient(
+            circle at top left,
+            rgba(0, 169, 79, 0.10),
+            transparent 32%
+        ),
+        linear-gradient(
+            135deg,
+            #f5fcf7 0%,
+            #ffffff 50%,
+            #f1fbf5 100%
+        );
+
+    text-shadow: none !important;
+}
+
+
+/* =========================
+   PAGE
+========================= */
+
+.found-page {
+    min-height: 100vh;
+    padding: 32px 24px 45px;
+}
+
+.found-container {
+    width: 100%;
+    max-width: 1080px;
+    margin: 0 auto;
+}
+
+
+/* =========================
+   TOP
+========================= */
+
+.found-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 25px;
+
+    margin-bottom: 55px;
+}
+
+
+/* BACK BUTTON */
+
+.back-link {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 6px;
+
+    padding: 11px 16px;
+
+    border-radius: 12px;
+
+    background: #e9faef;
+
+    color: #007f3b;
+
+    text-decoration: none;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    transition:
+        all 0.25s ease;
+
+    text-shadow: none !important;
+}
+
+.back-link:hover {
+    background: #ddf7e7;
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================
+   LOGO
+========================= */
+
+.page-brand {
+    display: flex;
+    align-items: center;
+
+    text-decoration: none;
+
+    color: #17241c;
+
+    text-shadow: none !important;
+}
+
+.page-brand img {
+    display: block;
+
+    width: 145px;
+    height: auto;
+
+    max-width: 100%;
+
+    object-fit: contain;
+
+    text-shadow: none !important;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.found-header {
+    margin-bottom: 30px;
+
+    text-shadow: none !important;
+}
+
+.page-label {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 7px;
+
+    margin-bottom: 12px;
+
+    padding: 7px 12px;
+
+    border-radius: 999px;
+
+    background: #e9faef;
+
+    color: #007f3b;
+
+    font-size: 12px;
+    font-weight: 800;
+
+    letter-spacing: 0.3px;
+
+    text-transform: uppercase;
+
+    text-shadow: none !important;
+}
+
+.page-label::before {
+    content: "";
+
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: #00a94f;
+}
+
+.found-header h1 {
+    margin: 0;
+
+    font-size: clamp(32px, 5vw, 48px);
+
+    line-height: 1.1;
+
+    letter-spacing: -1.6px;
+
+    font-weight: 800;
+
+    color: #17241c;
+
+    text-shadow: none !important;
+}
+
+.found-header p {
+    max-width: 720px;
+
+    margin: 14px 0 0;
+
+    color: #66736b;
+
+    font-size: 16px;
+
+    line-height: 1.7;
+
+    text-shadow: none !important;
+}
+
+
+/* =========================
+   FORM CARD
+========================= */
+
+.form-card {
+    padding: 40px;
+
+    background:
+        rgba(255, 255, 255, 0.94);
+
+    border:
+        1px solid
+        rgba(0, 169, 79, 0.10);
+
+    border-radius: 24px;
+
+    box-shadow:
+        0 10px 30px rgba(23, 36, 28, 0.055),
+        0 2px 8px rgba(0, 169, 79, 0.035);
+}
+
+
+/* =========================
+   FORM GRID
+========================= */
+
+.form-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 25px 20px;
+}
+
+.form-group.full {
+    grid-column: 1 / -1;
+}
+
+
+/* =========================
+   LABEL
+========================= */
+
+.form-group label {
+    display: block;
+
+    margin-bottom: 9px;
+
+    color: #17241c;
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+    text-shadow: none !important;
+}
+
+.required {
+    color: #00a94f;
+}
+
+
+/* =========================
+   INPUT
+========================= */
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+
+    width: 100%;
+
+    padding: 15px 17px;
+
+    border:
+        1px solid
+        rgba(0, 169, 79, 0.16);
+
+    border-radius: 14px;
+
+    background: #ffffff;
+
+    color: #17241c;
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+
+    text-shadow: none !important;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #a1aaa5;
+
+    opacity: 1;
+
+    text-shadow: none !important;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+
+    border-color: #00a94f;
+
+    box-shadow:
+        0 0 0 4px
+        rgba(0, 169, 79, 0.08);
+}
+
+.form-group textarea {
+
+    min-height: 155px;
+
+    resize: vertical;
+}
+
+
+/* =========================
+   UPLOAD
+========================= */
+
+.file-wrapper {
+    padding: 22px;
+
+    border:
+        1px dashed
+        rgba(0, 169, 79, 0.28);
+
+    border-radius: 14px;
+
+    background: #f8fcf9;
+}
+
+.file-wrapper input[type="file"] {
+    border: none;
+
+    padding: 0;
+
+    background: transparent;
+
+    box-shadow: none;
+}
+
+.file-note {
+    margin-top: 9px;
+
+    color: #89928d;
+
+    font-size: 11px;
+
+    line-height: 1.5;
+
+    text-shadow: none !important;
+}
+
+
+/* =========================
+   MESSAGE
+========================= */
+
+.form-message {
+    margin-bottom: 25px;
+
+    padding: 13px 15px;
+
+    border-radius: 12px;
+
+    font-size: 13px;
+
+    line-height: 1.5;
+
+    text-shadow: none !important;
+}
+
+.form-message.success {
+    background: #e9faef;
+    color: #007f3b;
+}
+
+.form-message.error {
+    background: #fff3f3;
+    color: #b52e2e;
+}
+
+
+/* =========================
+   SUBMIT
+========================= */
+
+.submit-btn {
+    width: 100%;
+
+    margin-top: 28px;
+
+    padding: 15px 20px;
+
+    border: none;
+
+    border-radius: 14px;
+
+    background: #00a94f;
+
+    color: #ffffff;
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition:
+        all 0.25s ease;
+
+    text-shadow: none !important;
+}
+
+.submit-btn:hover {
+    background: #007f3b;
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.page-footer {
+    margin-top: 35px;
+
+    padding-top: 20px;
+
+    border-top:
+        1px solid
+        rgba(0, 169, 79, 0.10);
+
+    text-align: center;
+
+    color: #89928d;
+
+    font-size: 12px;
+
+    text-shadow: none !important;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 750px) {
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-group.full {
+        grid-column: auto;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .found-page {
+        padding: 25px 18px 35px;
+    }
+
+    .found-top {
+        margin-bottom: 40px;
+    }
+
+    .page-brand img {
+        width: 120px;
+    }
+
+    .back-link {
+        padding: 9px 12px;
+        font-size: 12px;
+    }
+
+    .found-header h1 {
+        font-size: 34px;
+        letter-spacing: -1px;
+    }
+
+    .found-header p {
+        font-size: 14px;
+    }
+
+    .form-card {
+        padding: 24px 20px;
+        border-radius: 20px;
+    }
+
+}
+
+
+@media (max-width: 420px) {
+
+    .found-top {
+        align-items: flex-start;
+    }
+
+    .page-brand img {
+        width: 105px;
+    }
+
+    .found-header h1 {
+        font-size: 30px;
+    }
+
+    .back-link {
+        font-size: 11px;
+    }
+
+}
+
+</style>
+
+<script src="../js/store.js"></script>
+<script>RF.requireAuth();</script>
+<link rel="stylesheet" href="../css/theme.css">
+</head>
+
+
+<body>
+
+<div class="found-page">
+
+<div class="found-container">
+
+
+    <!-- TOP -->
+
+    <div class="found-top">
+
+        <a
+            href="dashboard.html"
+            class="back-link"
+        >
+            ← Kembali ke Dashboard
+        </a>
+
+
+        <a
+            href="dashboard.html"
+            class="page-brand"
+        >
+
+            <img
+                src="../assets/refound-logo.png"
+                alt="RE:FOUND FMIPA UNIMED"
+            >
+
+        </a>
+
+    </div>
+
+
+    <!-- HEADER -->
+
+    <div class="found-header">
+
+        <div class="page-label">
+            Laporan Barang
+        </div>
+
+        <h1>
+            Lapor Barang Ditemukan
+        </h1>
+
+        <p>
+            Masukkan informasi barang yang kamu temukan
+            agar sistem dapat membantu menemukan
+            kemungkinan pemiliknya.
+        </p>
+
+    </div>
+
+
+    <!-- FORM -->
+
+    <div class="form-card">
+
+
+        <div id="rf-alert"></div>
+
+
+        <form id="report-form"
+        >
+
+
+            <div class="form-grid">
+
+
+                <div class="form-group">
+
+                    <label>
+                        Nama Barang
+                        <span class="required">*</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        name="item_name"
+                        placeholder="Contoh: Laptop ASUS"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Kategori
+                        <span class="required">*</span>
+                    </label>
+
+                    <select
+                        name="category"
+                        required
+                    >
+
+                        <option value="">
+                            Pilih kategori
+                        </option>
+
+                        <option value="Elektronik">
+                            Elektronik
+                        </option>
+
+                        <option value="Dokumen">
+                            Dokumen
+                        </option>
+
+                        <option value="Aksesoris">
+                            Aksesoris
+                        </option>
+
+                        <option value="Pakaian">
+                            Pakaian
+                        </option>
+
+                        <option value="Lainnya">
+                            Lainnya
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Brand
+                    </label>
+
+                    <input
+                        type="text"
+                        name="brand"
+                        placeholder="Contoh: ASUS"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Warna
+                    </label>
+
+                    <input
+                        type="text"
+                        name="color"
+                        placeholder="Contoh: Hitam"
+                    >
+
+                </div>
+
+
+                <div class="form-group full">
+
+                    <label>
+                        Deskripsi / Ciri Khusus
+                        <span class="required">*</span>
+                    </label>
+
+                    <textarea
+                        name="description"
+                        placeholder="Jelaskan ciri khusus barang yang ditemukan."
+                        required
+                    ></textarea>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Lokasi Ditemukan
+                        <span class="required">*</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        name="found_location"
+                        placeholder="Contoh: Gedung FMIPA lantai 2"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Tanggal Ditemukan
+                        <span class="required">*</span>
+                    </label>
+
+                    <input
+                        type="date"
+                        name="found_date"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group full">
+
+                    <label>
+                        Foto Barang
+                    </label>
+
+                    <div class="file-wrapper">
+
+                        <input
+                            type="file"
+                            name="image"
+                            accept=".jpg,.jpeg,.png,.webp"
+                        >
+
+                        <div class="file-note">
+                            Foto disimpan untuk proses verifikasi
+                            · Maksimal 2 MB · JPG, PNG, atau WEBP
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="submit-btn"
+            >
+                Kirim Laporan Barang Ditemukan
+            </button>
+
+
+        </form>
+
+    </div>
+
+
+    <div class="page-footer">
+        RE:FOUND FMIPA UNIMED · Smart Lost & Found System
+    </div>
+
+
+</div>
+
+</div>
+
+
+<script>
+(function () {
+    var box = document.getElementById("rf-alert");
+    var form = document.getElementById("report-form");
+    RF.onSubmit(form, async function () {
+        var g = function (n) { return (form.elements[n].value || "").trim(); };
+        var data = {
+            item_name: g("item_name"), category: g("category"), brand: g("brand"),
+            color: g("color"), description: g("description"),
+            found_location: g("found_location"), found_date: form.elements["found_date"].value, image: ""
+        };
+        if (!data.item_name || !data.category || !data.description || !data.found_location || !data.found_date) {
+            RF.showAlert(box, "form-message", "error", "Data wajib diisi dengan lengkap.");
+            return;
+        }
+        try {
+            data.image = await RF.readImage(form.elements["image"].files[0]);
+        } catch (err) {
+            RF.showAlert(box, "form-message", "error", err.message);
+            return;
+        }
+        var r = RF.addReport("found", data);
+        if (!r.ok) { RF.showAlert(box, "form-message", "error", r.message); return; }
+        form.reset();
+        RF.showAlert(box, "form-message", "success", "Laporan barang ditemukan berhasil disimpan.");
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+})();
+</script>
+<script src="../js/ui.js"></script>
+</body>
+
+</html>

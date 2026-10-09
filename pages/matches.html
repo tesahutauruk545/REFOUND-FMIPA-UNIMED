@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Automatic Matching - RE:FOUND FMIPA UNIMED</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+            color: #17241c;
+            background:
+                radial-gradient(
+                    circle at top left,
+                    rgba(0, 169, 79, 0.10),
+                    transparent 32%
+                ),
+                linear-gradient(
+                    135deg,
+                    #f5fcf7 0%,
+                    #ffffff 50%,
+                    #f1fbf5 100%
+                );
+        }
+
+        .matching-page {
+            min-height: 100vh;
+            padding: 45px 24px;
+        }
+
+        .matching-container {
+            width: 100%;
+            max-width: 1080px;
+            margin: 0 auto;
+        }
+
+        /* TOP */
+
+        .matching-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            margin-bottom: 42px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: #17241c;
+        }
+
+        .brand img {
+            width: 52px;
+            height: 52px;
+            object-fit: contain;
+        }
+
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .brand-name {
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: -0.4px;
+        }
+
+        .brand-subtitle {
+            font-size: 12px;
+            color: #66736b;
+            font-weight: 500;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 10px 15px;
+            border: 1px solid rgba(0, 169, 79, 0.12);
+            border-radius: 12px;
+            background: #ffffff;
+            color: #007f3b;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 700;
+            transition: all 0.25s ease;
+        }
+
+        .back-btn:hover {
+            border-color: rgba(0, 169, 79, 0.25);
+            background: #f5fcf7;
+            transform: translateY(-1px);
+        }
+
+        /* HEADER */
+
+        .matching-header {
+            margin-bottom: 30px;
+        }
+
+        .page-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            margin-bottom: 12px;
+            padding: 7px 12px;
+            border-radius: 999px;
+            background: #e9faef;
+            color: #007f3b;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 0.3px;
+            text-transform: uppercase;
+        }
+
+        .page-label::before {
+            content: "";
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #00a94f;
+        }
+
+        .matching-header h1 {
+            margin: 0;
+            color: #17241c;
+            font-size: clamp(32px, 5vw, 46px);
+            line-height: 1.1;
+            letter-spacing: -1.5px;
+            font-weight: 800;
+        }
+
+        .matching-header p {
+            max-width: 680px;
+            margin: 14px 0 0;
+            color: #66736b;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        /* INFO */
+
+        .matching-info {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 24px;
+            padding: 16px 18px;
+            border: 1px solid rgba(0, 169, 79, 0.10);
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.82);
+        }
+
+        .info-icon {
+            flex-shrink: 0;
+            width: 34px;
+            height: 34px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            background: #e9faef;
+            color: #00a94f;
+            font-size: 16px;
+        }
+
+        .matching-info p {
+            margin: 0;
+            color: #66736b;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        /* MATCH CARD */
+
+        .match-card {
+            margin-bottom: 20px;
+            padding: 22px;
+            border: 1px solid rgba(0, 169, 79, 0.10);
+            border-radius: 22px;
+            background: rgba(255, 255, 255, 0.94);
+            box-shadow:
+                0 10px 30px rgba(23, 36, 28, 0.055),
+                0 2px 8px rgba(0, 169, 79, 0.035);
+        }
+
+        .match-items {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .item-box {
+            padding: 22px;
+            border: 1px solid rgba(0, 169, 79, 0.08);
+            border-radius: 17px;
+            background: #f8fcf9;
+        }
+
+        .item-box.found-box {
+            background: #fbfdfb;
+        }
+
+        .item-heading {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .item-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            background: #e9faef;
+            color: #00a94f;
+            font-size: 18px;
+        }
+
+        .item-heading h3 {
+            margin: 0;
+            color: #17241c;
+            font-size: 16px;
+            font-weight: 800;
+        }
+
+        .item-heading span {
+            display: block;
+            margin-top: 2px;
+            color: #89928d;
+            font-size: 11px;
+        }
+
+        .item-detail {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(0, 169, 79, 0.07);
+        }
+
+        .item-detail:last-of-type {
+            border-bottom: none;
+        }
+
+        .detail-label {
+            color: #89928d;
+            font-size: 12px;
+            flex-shrink: 0;
+        }
+
+        .detail-value {
+            color: #17241c;
+            font-size: 13px;
+            font-weight: 700;
+            text-align: right;
+            word-break: break-word;
+        }
+
+        /* PRIVACY */
+
+        .privacy-note {
+            margin-top: 15px;
+            padding: 13px 14px;
+            border: 1px solid rgba(185, 130, 0, 0.12);
+            border-radius: 12px;
+            background: #fffaf0;
+            color: #7a5d00;
+            font-size: 12px;
+            line-height: 1.6;
+        }
+
+        /* SCORE */
+
+        .score-box {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            margin-top: 16px;
+            padding: 18px 20px;
+            border: 1px solid rgba(0, 169, 79, 0.10);
+            border-radius: 16px;
+            background: #f5fcf7;
+        }
+
+        .score-info {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .score-title {
+            color: #17241c;
+            font-size: 14px;
+            font-weight: 800;
+        }
+
+        .score-description {
+            color: #7a857e;
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
+        .score-value {
+            flex-shrink: 0;
+            color: #00a94f;
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        /* EMPTY */
+
+        .empty-state {
+            padding: 55px 25px;
+            border: 1px solid rgba(0, 169, 79, 0.10);
+            border-radius: 22px;
+            background: rgba(255, 255, 255, 0.94);
+            box-shadow:
+                0 10px 30px rgba(23, 36, 28, 0.055),
+                0 2px 8px rgba(0, 169, 79, 0.035);
+            text-align: center;
+        }
+
+        .empty-icon {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 18px;
+            background: #e9faef;
+            color: #00a94f;
+            font-size: 28px;
+        }
+
+        .empty-state h3 {
+            margin: 0 0 8px;
+            color: #17241c;
+            font-size: 20px;
+            font-weight: 800;
+        }
+
+        .empty-state p {
+            max-width: 440px;
+            margin: 0 auto;
+            color: #7a857e;
+            font-size: 13px;
+            line-height: 1.7;
+        }
+
+        /* FOOTER */
+
+        .matching-footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(0, 169, 79, 0.10);
+            color: #89928d;
+            font-size: 12px;
+            text-align: center;
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 750px) {
+
+            .match-items {
+                grid-template-columns: 1fr;
+            }
+
+            .score-box {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .score-value {
+                font-size: 25px;
+            }
+
+        }
+
+        @media (max-width: 600px) {
+
+            .matching-page {
+                padding: 28px 18px;
+            }
+
+            .matching-top {
+                margin-bottom: 35px;
+            }
+
+            .brand img {
+                width: 44px;
+                height: 44px;
+            }
+
+            .brand-name {
+                font-size: 17px;
+            }
+
+            .brand-subtitle {
+                font-size: 10px;
+            }
+
+            .back-btn {
+                padding: 9px 12px;
+                font-size: 12px;
+            }
+
+            .matching-header h1 {
+                font-size: 34px;
+                letter-spacing: -1px;
+            }
+
+            .matching-header p {
+                font-size: 14px;
+            }
+
+            .match-card {
+                padding: 14px;
+                border-radius: 19px;
+            }
+
+            .item-box {
+                padding: 18px;
+            }
+
+            .item-detail {
+                flex-direction: column;
+                gap: 4px;
+            }
+
+            .detail-value {
+                text-align: left;
+            }
+
+            .empty-state {
+                padding: 45px 20px;
+            }
+
+        }
+
+        @media (max-width: 420px) {
+
+            .matching-top {
+                align-items: flex-start;
+            }
+
+            .brand-subtitle {
+                display: none;
+            }
+
+            .matching-header h1 {
+                font-size: 30px;
+            }
+
+            .back-btn {
+                font-size: 11px;
+            }
+
+        }
+
+    </style>
+
+<script src="../js/store.js"></script>
+<script>RF.requireAuth();</script>
+<link rel="stylesheet" href="../css/theme.css">
+</head>
+
+<body>
+
+<div class="matching-page">
+
+    <div class="matching-container">
+
+
+        <!-- TOP -->
+
+        <div class="matching-top">
+
+            <a href="dashboard.html" class="brand">
+
+                <img
+                    src="../assets/refound-logo.png"
+                    alt="RE:FOUND FMIPA UNIMED"
+                >
+
+                <div class="brand-text">
+
+                    <div class="brand-name">
+                        RE:FOUND
+                    </div>
+
+                    <div class="brand-subtitle">
+                        FMIPA UNIMED
+                    </div>
+
+                </div>
+
+            </a>
+
+
+            <a href="dashboard.html" class="back-btn">
+                ← Dashboard
+            </a>
+
+        </div>
+
+
+        <!-- HEADER -->
+
+        <div class="matching-header">
+
+            <div class="page-label">
+                Automatic Matching
+            </div>
+
+            <h1>
+                Kemungkinan Kecocokan
+            </h1>
+
+            <p>
+                Sistem membandingkan karakteristik laporan
+                barang hilang dengan barang yang ditemukan
+                untuk menemukan kemungkinan kecocokan.
+            </p>
+
+        </div>
+
+
+        <!-- INFO -->
+
+        <div class="matching-info">
+
+            <div class="info-icon">
+                ✦
+            </div>
+
+            <p>
+                Hasil di bawah merupakan kemungkinan kecocokan
+                berdasarkan karakteristik laporan. Foto dan ciri
+                khusus barang temuan tetap disembunyikan untuk
+                menjaga proses verifikasi.
+            </p>
+
+        </div>
+
+
+        <div id="rf-matches"></div>
+
+
+        <div class="matching-footer">
+            RE:FOUND FMIPA UNIMED · Smart Lost & Found System
+        </div>
+
+
+    </div>
+
+</div>
+
+
+<script>
+(function () {
+    var esc = RF.esc;
+    var root = document.getElementById("rf-matches");
+    var matches = RF.getMatches();
+    var emptyHtml = `
+
+            <!-- EMPTY STATE -->
+
+            <div class="empty-state">
+
+                <div class="empty-icon">
+                    🔍
+                </div>
+
+                <h3>
+                    Belum ada kecocokan
+                </h3>
+
+                <p>
+                    Sistem belum menemukan kemungkinan kecocokan
+                    dari laporan barang hilang yang kamu buat.
+                    Coba cek kembali setelah ada laporan barang
+                    ditemukan yang baru.
+                </p>
+
+            </div>
+
+
+        `;
+    var card = function (m) { return `
+
+                <div class="match-card">
+
+                    <div class="match-items">
+
+
+                        <!-- LOST ITEM -->
+
+                        <div class="item-box">
+
+                            <div class="item-heading">
+
+                                <div class="item-icon">
+                                    🔍
+                                </div>
+
+                                <div>
+
+                                    <h3>
+                                        Barang Kamu
+                                    </h3>
+
+                                    <span>
+                                        Laporan barang hilang
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="item-detail">
+
+                                <span class="detail-label">
+                                    Nama
+                                </span>
+
+                                <span class="detail-value">
+                                    ${esc(m.lost.item_name)}
+                                </span>
+
+                            </div>
+
+
+                            <div class="item-detail">
+
+                                <span class="detail-label">
+                                    Kategori
+                                </span>
+
+                                <span class="detail-value">
+                                    ${esc(m.lost.category)}
+                                </span>
+
+                            </div>
+
+
+                            <div class="item-detail">
+
+                                <span class="detail-label">
+                                    Brand
+                                </span>
+
+                                <span class="detail-value">
+                                    ${esc(m.lost.brand)}
+                                </span>
+
+                            </div>
+
+
+                            <div class="item-detail">
+
+                                <span class="detail-label">
+                                    Warna
+                                </span>
+
+                                <span class="detail-value">
+                                    ${esc(m.lost.color)}
+                                </span>
+
+                            </div>
+
+
+                            <div class="item-detail">
+
+                                <span class="detail-label">
+                                    Lokasi
+                                </span>
+
+                                <span class="detail-value">
+                                    ${esc(m.lost.lost_location)}
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- FOUND ITEM -->
+
+                        <div class="item-box found-box">
+
+                            <div class="item-heading">
+
+                                <div class="item-icon">
+                                    📦
+                                </div>
+
+                                <div>
+
+                                    <h3>
+                                        Barang Ditemukan
+                                    </h3>
+
+                                    <span>
+                                        Laporan barang temuan
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="item-detail">
+
+                                <span class="detail-label">
+                                    Kategori
+                                </span>
+
+                                <span class="detail-value">
+                                    ${esc(m.found.category)}
+                                </span>
+
+                            </div>
+
+
+                            <div class="item-detail">
+
+                                <span class="detail-label">
+                                    Warna
+                                </span>
+
+                                <span class="detail-value">
+                                    ${esc(m.found.color)}
+                                </span>
+
+                            </div>
+
+
+                            <div class="item-detail">
+
+                                <span class="detail-label">
+                                    Lokasi
+                                </span>
+
+                                <span class="detail-value">
+                                    ${esc(m.found.found_location)}
+                                </span>
+
+                            </div>
+
+
+                            <div class="item-detail">
+
+                                <span class="detail-label">
+                                    Tanggal
+                                </span>
+
+                                <span class="detail-value">
+                                    ${esc(m.found.found_date)}
+                                </span>
+
+                            </div>
+
+
+                            <div class="privacy-note">
+
+                                🔒 Foto dan ciri khusus barang temuan
+                                disembunyikan untuk mencegah klaim
+                                sepihak. Informasi tersebut digunakan
+                                untuk proses verifikasi.
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- SCORE -->
+
+                    <div class="score-box">
+
+                        <div class="score-info">
+
+                            <div class="score-title">
+                                Match Score
+                            </div>
+
+                            <div class="score-description">
+                                Nilai kecocokan berdasarkan
+                                karakteristik laporan.
+                            </div>
+
+                        </div>
+
+
+                        <div class="score-value">
+
+                            ${m.score}%
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            `; };
+    root.innerHTML = matches.length ? matches.map(card).join("") : emptyHtml;
+})();
+</script>
+<script src="../js/ui.js"></script>
+</body>
+
+</html>

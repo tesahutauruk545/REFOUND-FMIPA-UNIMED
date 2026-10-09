@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Masuk — RE:FOUND FMIPA UNIMED</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            overflow-x: hidden;
+            font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+        }
+
+        /* =====================================================
+           PAGE
+        ===================================================== */
+
+        .refound-auth-page {
+
+            min-height: 100vh;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 35px 20px;
+
+            position: relative;
+            overflow: hidden;
+
+            background:
+                radial-gradient(
+                    circle at 15% 15%,
+                    rgba(40,217,118,0.13),
+                    transparent 30%
+                ),
+                radial-gradient(
+                    circle at 85% 85%,
+                    rgba(0,169,79,0.08),
+                    transparent 32%
+                ),
+                linear-gradient(
+                    135deg,
+                    #f8fcf9,
+                    #eef9f2
+                );
+
+        }
+
+        .refound-auth-page::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 520px;
+            height: 520px;
+
+            border-radius: 50%;
+
+            background: rgba(0,169,79,0.035);
+
+            top: -280px;
+            right: -180px;
+
+        }
+
+        .refound-auth-page::after {
+
+            content: "";
+
+            position: absolute;
+
+            width: 380px;
+            height: 380px;
+
+            border-radius: 50%;
+
+            background: rgba(40,217,118,0.045);
+
+            bottom: -230px;
+            left: -160px;
+
+        }
+
+        /* =====================================================
+           WRAPPER
+        ===================================================== */
+
+        .refound-auth-wrapper {
+
+            width: 100%;
+            max-width: 470px;
+
+            position: relative;
+            z-index: 2;
+
+            animation:
+                authFadeIn
+                .55s
+                cubic-bezier(.22,1,.36,1);
+
+        }
+
+        /* =====================================================
+           LOGO
+        ===================================================== */
+
+        .refound-auth-logo {
+
+            display: flex;
+            justify-content: center;
+
+            margin-bottom: 25px;
+        }
+
+        .refound-auth-logo img {
+
+            width: 205px;
+            height: auto;
+
+            display: block;
+
+            object-fit: contain;
+
+        }
+
+        /* =====================================================
+           CARD
+        ===================================================== */
+
+        .refound-auth-card {
+
+            width: 100%;
+
+            padding: 39px;
+
+            border-radius: 26px;
+
+            background: rgba(255,255,255,0.94);
+
+            border:
+                1px solid
+                rgba(0,169,79,0.08);
+
+            box-shadow:
+                0 25px 65px
+                rgba(20,60,38,0.10);
+
+        }
+
+        /* =====================================================
+           HEADER
+        ===================================================== */
+
+        .refound-auth-header {
+
+            margin-bottom: 27px;
+
+        }
+
+        .refound-auth-header h1 {
+
+            margin: 0 0 8px;
+
+            color: #17241c;
+
+            font-size: 30px;
+
+            line-height: 1.15;
+
+            letter-spacing: -1px;
+
+        }
+
+        .refound-auth-header p {
+
+            margin: 0;
+
+            color: #718078;
+
+            font-size: 13px;
+
+            line-height: 1.6;
+
+        }
+
+        /* =====================================================
+           ALERT
+        ===================================================== */
+
+        .refound-auth-alert {
+
+            margin-bottom: 18px;
+
+            padding: 13px 14px;
+
+            border-radius: 12px;
+
+            font-size: 12px;
+
+            line-height: 1.5;
+
+        }
+
+        .refound-auth-alert.error {
+
+            color: #a92f2f;
+
+            background: #fff3f3;
+
+            border:
+                1px solid
+                rgba(214,69,69,0.10);
+
+        }
+
+        .refound-auth-alert.success {
+
+            color: #087c3c;
+
+            background: #edf9f1;
+
+            border:
+                1px solid
+                rgba(0,169,79,0.10);
+
+        }
+
+        /* =====================================================
+           FORM
+        ===================================================== */
+
+        .refound-auth-form {
+
+            display: grid;
+
+            gap: 17px;
+
+        }
+
+        .refound-auth-group {
+
+            display: grid;
+
+            gap: 7px;
+
+        }
+
+        .refound-auth-group label {
+
+            color: #33443a;
+
+            font-size: 12px;
+
+            font-weight: 750;
+
+        }
+
+        .refound-auth-group input {
+
+            width: 100%;
+
+            height: 50px;
+
+            padding: 0 15px;
+
+            border:
+                1px solid
+                #dfe8e2;
+
+            border-radius: 12px;
+
+            outline: none;
+
+            color: #17241c;
+
+            background: #f9fcfa;
+
+            font-family: inherit;
+
+            font-size: 13px;
+
+            transition:
+                border-color .22s ease,
+                box-shadow .22s ease,
+                background .22s ease;
+
+        }
+
+        .refound-auth-group input::placeholder {
+            color: #a0aaa4;
+        }
+
+        .refound-auth-group input:focus {
+
+            border-color:
+                rgba(0,169,79,0.48);
+
+            background: white;
+
+            box-shadow:
+                0 0 0 4px
+                rgba(0,169,79,0.07);
+
+        }
+
+        /* =====================================================
+           BUTTON
+        ===================================================== */
+
+        .refound-auth-submit {
+
+            width: 100%;
+
+            height: 51px;
+
+            margin-top: 3px;
+
+            border: none;
+
+            border-radius: 12px;
+
+            background: #00a94f;
+
+            color: white;
+
+            cursor: pointer;
+
+            font-family: inherit;
+
+            font-size: 13px;
+
+            font-weight: 800;
+
+            box-shadow:
+                0 10px 23px
+                rgba(0,169,79,0.19);
+
+            transition:
+                .25s
+                cubic-bezier(.22,1,.36,1);
+
+        }
+
+        .refound-auth-submit:hover {
+
+            background: #007f3b;
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 14px 28px
+                rgba(0,169,79,0.23);
+
+        }
+
+        .refound-auth-submit:active {
+
+            transform: scale(.985);
+
+        }
+
+        /* =====================================================
+           BOTTOM LINK
+        ===================================================== */
+
+        .refound-auth-switch {
+
+            margin-top: 23px;
+
+            padding-top: 20px;
+
+            border-top:
+                1px solid
+                #edf0ee;
+
+            text-align: center;
+
+            color: #758078;
+
+            font-size: 12px;
+
+        }
+
+        .refound-auth-switch a {
+
+            color: #00a94f;
+
+            font-weight: 800;
+
+            text-decoration: none;
+
+        }
+
+        .refound-auth-switch a:hover {
+            color: #007f3b;
+        }
+
+        /* =====================================================
+           HOME
+        ===================================================== */
+
+        .refound-auth-home {
+
+            display: flex;
+
+            justify-content: center;
+
+            margin-top: 18px;
+
+        }
+
+        .refound-auth-home a {
+
+            color: #78847d;
+
+            font-size: 11px;
+
+            text-decoration: none;
+
+            transition: .2s ease;
+
+        }
+
+        .refound-auth-home a:hover {
+            color: #00a94f;
+        }
+
+        /* =====================================================
+           FOOTNOTE
+        ===================================================== */
+
+        .refound-auth-note {
+
+            text-align: center;
+
+            margin-top: 18px;
+
+            color: #9aa49e;
+
+            font-size: 10px;
+
+        }
+
+        /* =====================================================
+           ANIMATION
+        ===================================================== */
+
+        @keyframes authFadeIn {
+
+            from {
+                opacity: 0;
+                transform:
+                    translateY(18px)
+                    scale(.985);
+            }
+
+            to {
+                opacity: 1;
+                transform:
+                    translateY(0)
+                    scale(1);
+            }
+
+        }
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 520px) {
+
+            .refound-auth-page {
+                padding: 25px 14px;
+            }
+
+            .refound-auth-logo {
+                margin-bottom: 20px;
+            }
+
+            .refound-auth-logo img {
+                width: 175px;
+            }
+
+            .refound-auth-card {
+                padding: 27px 21px;
+                border-radius: 22px;
+            }
+
+            .refound-auth-header h1 {
+                font-size: 27px;
+            }
+
+        }
+
+        @media (max-width: 360px) {
+
+            .refound-auth-card {
+                padding: 24px 18px;
+            }
+
+        }
+
+    </style>
+
+<script src="../js/store.js"></script>
+<script>RF.redirectIfLoggedIn();</script>
+<link rel="stylesheet" href="../css/theme.css">
+</head>
+
+
+<body>
+
+<div class="refound-auth-page">
+
+    <div class="refound-auth-wrapper">
+
+
+        <!-- LOGO -->
+
+        <a
+            href="../index.html"
+            class="refound-auth-logo"
+        >
+
+            <img
+                src="../assets/refound-logo.png"
+                alt="RE:FOUND FMIPA UNIMED"
+            >
+
+        </a>
+
+
+        <!-- CARD -->
+
+        <div class="refound-auth-card">
+
+
+            <div class="refound-auth-header">
+
+                <h1>
+                    Selamat datang kembali
+                </h1>
+
+                <p>
+                    Masuk ke akun RE:FOUND untuk melanjutkan.
+                </p>
+
+            </div>
+
+
+            <div id="rf-alert"></div>
+
+
+            <form
+                id="login-form"
+                class="refound-auth-form"
+            >
+
+                <div class="refound-auth-group">
+
+                    <label for="email">
+                        Email
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="Masukkan email kamu"
+                        autocomplete="email"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="refound-auth-group">
+
+                    <label for="password">
+                        Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Masukkan password kamu"
+                        autocomplete="current-password"
+                        required
+                    >
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="refound-auth-submit"
+                >
+                    Masuk ke RE:FOUND
+                </button>
+
+            </form>
+
+
+            <div class="refound-auth-switch">
+
+                Belum punya akun?
+
+                <a href="register.html">
+                    Daftar sekarang
+                </a>
+
+            </div>
+
+
+            <div class="refound-auth-home">
+
+                <a href="../index.html">
+                    ← Kembali ke beranda
+                </a>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="refound-auth-note">
+            RE:FOUND • Lost & Found FMIPA UNIMED
+        </div>
+
+
+    </div>
+
+</div>
+
+
+<script>
+(function () {
+    var box = document.getElementById("rf-alert");
+    if (new URLSearchParams(location.search).has("registered")) {
+        box.innerHTML = '<div class="refound-auth-alert success">Akun berhasil dibuat. Silakan masuk menggunakan akun kamu.</div>';
+    }
+    RF.onSubmit(document.getElementById("login-form"), async function () {
+        var r = await RF.login(
+            document.getElementById("email").value,
+            document.getElementById("password").value
+        );
+        if (r.ok) { location.href = "dashboard.html"; return; }
+        RF.showAlert(box, "refound-auth-alert", "error", r.message);
+    });
+})();
+</script>
+<script src="../js/ui.js"></script>
+</body>
+
+</html>
